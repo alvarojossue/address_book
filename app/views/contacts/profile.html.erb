@@ -1,0 +1,12 @@
+<h1>Contact page</h1>
+<p>Name: <%= @contact.name %></p>
+<p>Address: <%= @contact.address %></p>
+<p>Phone: <%= @contact.phone %></p>
+<p>E-mail: <%= @contact.email %></p>
+
+<div> 
+	<%= link_to "Add a new contact", "/contacts/new" %>
+</div>
+<div>
+<%= link_to "See list of contacts", "/contacts" %>
+</div>

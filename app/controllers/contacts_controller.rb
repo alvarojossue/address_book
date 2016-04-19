@@ -21,4 +21,9 @@ class ContactsController < ApplicationController
 
     redirect_to("/contacts")
 	end
+
+	def profile
+		@contact = Contact.find_by(id: params[:id])
+		render 'profile'
+	end
 end
