@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
 	def index
 		@contacts = Contact.all
+		@contacts_alpha = @contacts.sort{|a,b| a['name']<=>b['name']}
 		render 'index'
 	end
 
