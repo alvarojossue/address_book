@@ -4,9 +4,23 @@
 <p>Phone: <%= @contact.phone %></p>
 <p>E-mail: <%= @contact.email %></p>
 
+<form action="/contacts/favorites" method="POST">
+	<input type="hidden" name="contact" value="<%=@contact.id%>"></input>
+	<button type="submit">Mark as favorite</button>
+	<div>
+    <input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+  </div>
+</form>
+
+
+
+
+
 <div> 
 	<%= link_to "Add a new contact", "/contacts/new" %>
 </div>
 <div>
 <%= link_to "See list of contacts", "/contacts" %>
 </div>
+

@@ -10,20 +10,31 @@ class ContactsController < ApplicationController
 	end
 
 	def create
-	contact = Contact.new(
-      :name => params[:contact][:name],
-      :address => params[:contact][:address],
-      :phone => params[:contact][:phone],
-      :email => params[:contact][:email])
+		contact = Contact.new(
+      		:name => params[:contact][:name],
+      		:address => params[:contact][:address],
+      		:phone => params[:contact][:phone],
+      		:email => params[:contact][:email])
 
-    # Now we save the contact
-    contact.save
+		if contact[:name] != "" && contact[:address] != ""
+    		contact.save
+    		redirect_to("/contacts")
+    	else
+    		render 'validation'
+    	end
 
-    redirect_to("/contacts")
 	end
 
 	def profile
 		@contact = Contact.find_by(id: params[:id])
 		render 'profile'
+	end
+
+	def new_favorite
+		contact_id = params[:contact]
+		@the_contact = Contact.find_by(:id contact_id)
+		@the_contact.favorite = true
+		@the_contact.save
+		render 'favorites'
 	end
 end

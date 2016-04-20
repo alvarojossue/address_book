@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get '/contacts/:id', to: 'contacts#profile'
 
+  post '/contacts/favorites', to: 'contacts#new_favorite'
+
 end
